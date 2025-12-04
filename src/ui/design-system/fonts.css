@@ -1,0 +1,108 @@
+@layer utilities{
+    .text-8xl{
+        font-size: 120px;
+        font-weight: 500;
+        line-height: 120px;
+        letter-spacing: -6px
+        ;
+    }
+
+    .text-7xl{
+        font-size: 72px;
+        font-weight: 600;
+        line-height: 80px;
+        letter-spacing: -4.5px
+    }
+
+    .text-6xl{
+        font-size: 55px;
+        font-weight: 500;
+        line-height: 60px;
+        letter-spacing: -2.5px
+    }
+
+    .text-5xl{
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 54px;
+        letter-spacing: -1.6px
+    }
+
+    .text-4xl{
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 44px;
+        letter-spacing: -1.2px
+    }
+
+    .text-3xl{
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 34px;
+        letter-spacing: -.8px
+    }
+
+    .text-2xl{
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 30px;
+        letter-spacing: -1px
+    }
+
+    .text-xl{
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: -1px
+    }
+
+    .text-lg{
+        font-size: 21px;
+        font-weight: 400;
+        line-height: 30px;
+        letter-spacing: -.8px
+    }
+
+    .text-base{
+        font-size: 17px;
+        font-weight: 400;
+        line-height: 25px;
+        letter-spacing: -.7px
+    }
+
+    .text-sm{
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 23px;
+        letter-spacing: -.6px
+    }
+
+    .text-caption1{
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -.6px
+    }
+
+    .text-caption2{
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: -.3px
+    }
+
+    .text-caption3{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: -.5px
+    }
+
+    .text-caption4{
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 15px;
+        letter-spacing: -.2px
+    }
+
+}

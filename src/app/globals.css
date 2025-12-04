@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@import "../ui/design-system/fonts.css";
+@import "../ui/design-system/colors.css";
+@import "../ui/design-system/borders.css";
+
+
+@layer base {
+    html {
+        font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    a:hover{
+        color : #5f62e2;
+    }
+
+    animate, a, a:hover{
+        @apply transition-colors duration-200;
+    }
+}
