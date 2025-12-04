@@ -19,6 +19,7 @@
   "apphosting": [
     {
       "backendId": "juniordevapp",
+      "source": ".",
       "rootDir": ".",
       "ignore": [
         "node_modules",
