@@ -40,6 +40,11 @@ export const LoginView = ({form} : LoginViewProps) => {
               </div>
               <div>
                 <LoginForm form={form}/>
+                <Typography variant="caption4" theme="primary" className="max-w-md mx-auto space-y-1 text-center">
+                    <Link href="/connexion/mot-de-passe-perdu">
+                      Mot de passe oublié ?
+                    </Link>
+                </Typography>
               </div>
             </div>
           </Box>

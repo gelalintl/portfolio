@@ -1,0 +1,1 @@
+export type FirebaseFormField = "email" | "password" | "wayYouKnowUs"

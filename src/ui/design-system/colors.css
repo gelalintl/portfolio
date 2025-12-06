@@ -147,6 +147,10 @@
       color: #FF4E4E; /* rouge vif */
       opacity: 1;
     }
+
+    .bg-alert-danger{
+        background-color: #ffcaca;
+    }
   
     /* warning (orange) */
     .text-alert-warning, 

@@ -7,7 +7,7 @@ import { InscriptionForm } from "./inscription.form"
 import { FormsType } from "@/types/forms"
 
 interface InscriptionViewProps {
-  form : FormsType
+  form : FormsType,
 }
 
 export const InscriptionView = ({form}: InscriptionViewProps) => {
@@ -20,7 +20,7 @@ export const InscriptionView = ({form}: InscriptionViewProps) => {
             <Image fill src="/assets/images/spongebob-t.png" alt="Image d'inscription" className="object-none"/>
           </div>
         </div>
-        <div className="flex items-center">
+        <div className="flex flex-col gap-3 items-center">
           <Box padding_y="py-5">
             <div>
               <div className="flex items-center justify-between">
@@ -38,6 +38,14 @@ export const InscriptionView = ({form}: InscriptionViewProps) => {
               </div>
               <div>
                 <InscriptionForm form = {form}/>
+                <Typography variant="caption4" theme="gray" className="max-w-md mx-auto space-y-1 text-center">
+                  <div>En t'inscrivant , tu acceptes les</div>
+                  <div>
+                    <Link href="/#" className="text-gray">Conditions d'utilisation</Link>
+                    {" "} et la {" "}
+                    <Link href="/#" className="text-gray">Politique de confidentialité</Link>
+                  </div>
+                </Typography>
               </div>
             </div>
           </Box>

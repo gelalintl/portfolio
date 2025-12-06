@@ -26,7 +26,13 @@ export const Input = ({
     isAutocompleted = false,  
     className,  
  }: InputProps) => {
-    console.log('errors =>', errors[id])
+
+  const errorTheme =
+    errors[id]?.type === "minLength" ||
+    errors[id]?.type === "weak-password"
+      ? "warning"
+      : "danger";
+
   return (
     <div className="space-y-3">
         <input 
@@ -49,7 +55,7 @@ export const Input = ({
           autoComplete={isAutocompleted ? "on" : "off"}
         />
         {errors[id] && (
-            <Typography variant="caption4" balise="div" theme="danger">
+            <Typography variant="caption4" balise="div" theme={errorTheme}>
                 {errors[id].message}
             </Typography>
         )}
