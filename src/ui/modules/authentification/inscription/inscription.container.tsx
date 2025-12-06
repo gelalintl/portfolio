@@ -1,7 +1,7 @@
 "use client";
 
 {/**    Firebase importations      */}
-import { FIREBASE_AUTH_ERRORS } from "@/utils/firebaseAuthErrors";
+import { FIREBASE_CREATE_ERRORS } from "@/utils/firebaseAuthErrors";
 
 {/**         Form Imports         */}
 import { SubmitHandler, useForm } from "react-hook-form"
@@ -37,7 +37,7 @@ export const InscriptionContainer = () => {
         success : "L'utilisateur a été créé avec succès. Redirection vers votre tableau de bord en cours ...",
         error: (error) => {
             const firebaseError = error as {code?: string}
-            const gotError = firebaseError.code ? FIREBASE_AUTH_ERRORS[firebaseError.code] : null;
+            const gotError = firebaseError.code ? FIREBASE_CREATE_ERRORS[firebaseError.code] : null;
 
             if(gotError?.field){
               setError(gotError.field , {
