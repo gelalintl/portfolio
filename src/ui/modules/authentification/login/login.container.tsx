@@ -44,7 +44,7 @@ export const LoginContainer = () => {
             return gotError.message
           }
           console.log(error)
-            return "Une erreur est survenue. Veuillez réessayer!!"
+            return gotError?.message || "Une erreur est survenue. Veuillez réessayer!!"
         }
       }
     ).then(()=>{

@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/navigation/footer";
+import { Navigation } from "@/components/navigation/navigation";
+import { AuthProvider } from "@/context/AuthContext";
+import { Breadcrumb } from "@/ui/components/breadcrumb/breadcrumb";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets : ["latin"],
@@ -19,10 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${inter.className} antialiased`}
-      >
-        {children}
+      <body className={`${inter.className} antialiased`}>
+      <AuthProvider>
+          <Toaster position="top-center" />
+          {children}
+      </AuthProvider>
       </body>
     </html>
   );

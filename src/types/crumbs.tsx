@@ -7,7 +7,7 @@ export interface Crumb{
 export const crumbsList : Crumb[] = [
     {key: "", label : "Accueil", href: "/"},
     {key: "design", label: "Design System", href : "/design"},
-    {key: "contact", label: "Contacts", href : "/contacts"},
+    {key: "contacts", label: "Contact", href : "/contacts"},
     {key: "formations", label: "Formations", href : "/formations"},
     {key: "projects", label: "Projets", href : "/projects"},
     {key: "connexion", label: "Connexion", href : "/connexion"},

@@ -26,4 +26,7 @@ export const FIREBASE_LOGIN_ERRORS : Record<string, FirebaseErrorsConfig<Firebas
         field: "password",
         message: "Mot de passe incorrect",
     },
+    "auth/invalid-credential":{
+        message: "Email et/ou mot de passe incorrects."
+    }
 }

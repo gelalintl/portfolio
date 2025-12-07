@@ -1,5 +1,5 @@
 import Seo from "@/libs/seo";
-import { Layout } from "@/ui/components/layouts/layout";
+import { NoBreadcrumbLayout } from "@/ui/components/layouts/nobreadcrumblayout";
 import { LandingPageContainer } from "@/ui/modules/landingPage/components/container";
 
 export const generateMetadata =  () => {
@@ -12,10 +12,8 @@ export const generateMetadata =  () => {
 export default function Home() {
 
   return (
-    <>
-      <Layout>
-        <LandingPageContainer/>
-      </Layout>
-    </>
+    <NoBreadcrumbLayout>
+      <LandingPageContainer/> 
+    </NoBreadcrumbLayout>
   );
 }

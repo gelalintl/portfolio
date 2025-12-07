@@ -1,12 +1,34 @@
+"use client"
+
 import { Container } from "@/ui/components/container/container"
 import { Button } from "@/ui/design-system/button/button"
 import { Logo } from "@/ui/design-system/logo/logo"
 import { Typography } from "@/ui/design-system/typography/typography"
 import { ActiveLink } from "./activeLink"
+import { useAuth } from "@/context/AuthContext"
+import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
+import { FirebaseLogoutUser } from "@/api/authentication"
 
 interface NavigationProps {}
 
 export const Navigation = ({}: NavigationProps) => {
+
+    const {user, loading} = useAuth()
+    const router = useRouter()
+
+    const handleLogoutUser = () => {
+        toast.promise(
+            FirebaseLogoutUser(),
+            {
+                loading: "Déconnexion en cours...",
+                success: "Vous avez été déconnecté.",
+                error: "Une erreur est survenue lors de la déconnexion."
+            }
+        )
+        .then(()=> router.push("/"))
+    }
+
   return (
     <nav className="border-b-2 border-gray-300 z-10 fixed top-0 left-0 w-full bg-gray-50">
         <Container className="flex items-center justify-between py-1.5 gap-5">
@@ -37,8 +59,18 @@ export const Navigation = ({}: NavigationProps) => {
 
                 {/* Buttons */}
                 <div className="flex items-center gap-2">
-                    <Button size="small" baseUrl="/connexion">Connexion</Button>
-                    <Button size="small" variant="secondary" baseUrl="/connexion/inscription">Rejoindre</Button>
+                    {!loading && !user && (
+                        <>
+                        <Button size="small" baseUrl="/connexion">Connexion</Button>
+                        <Button size="small" variant="secondary" baseUrl="/connexion/inscription">Rejoindre</Button>
+                        </>
+                    )}
+
+                    {!loading && user && (
+                        <>
+                        <Button size="small" variant="secondary" onClick={handleLogoutUser}>Déconnexion</Button>
+                        </>
+                    )}
                 </div>
             </div>
         </Container>

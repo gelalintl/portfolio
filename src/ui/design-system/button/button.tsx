@@ -17,6 +17,7 @@ interface ButtonProps {
     linkType? : LinkType,
     type? : "button" | "submit",
     fullWidth? : boolean,
+    onClick?: () => void,
 }
 
 export const Button = ({
@@ -33,6 +34,7 @@ export const Button = ({
   linkType = LinkTypes.INTERNAL,
   type = "button",
   fullWidth = false,
+  onClick,
 }:ButtonProps) => {
 
   let variantClass : string = "", sizeClass: string = "", iconSize : number = 0;
@@ -90,8 +92,6 @@ export const Button = ({
     break;
   }
 
-  const handleClick = ()=>{ }
-
   const buttonContent = (
     <>
       {isLoading && (
@@ -137,6 +137,7 @@ export const Button = ({
   const buttonElement = (
     <button 
         type={type}
+        onClick={onClick}
         className={`${variantClass} ${sizeClass} ${iconSize} ${isLoading && "cursor-wait"} ${fullWidth && "w-full"} relative animate`}
         disabled = {isDisabled || isLoading ? true : false}
       >   
@@ -144,7 +145,7 @@ export const Button = ({
       </button>
   )
 
-  if (baseUrl){
+  if (baseUrl && !onClick){
     if(linkType === LinkTypes.EXTERNAL){
       return (
         <a href={baseUrl} target="_blank">{buttonElement}</a>
@@ -153,6 +154,10 @@ export const Button = ({
     else {
       return <Link href={baseUrl}>{buttonElement}</Link>
     }
+  }
+
+  if (baseUrl && onClick) {
+    console.warn("Le composant Button ne doit pas recevoir un Url et une action au clic!!");
   }
   
   return buttonElement;

@@ -1,12 +1,5 @@
-import { Navigation } from "@/components/navigation/navigation";
 import Seo from "@/libs/seo";
-import { Container } from "@/ui/components/container/container";
-import { Avatar } from "@/ui/design-system/avatar/avatar";
-import { Button } from "@/ui/design-system/button/button";
-import { Logo } from "@/ui/design-system/logo/logo";
-import { Spinner } from "@/ui/design-system/spinner/spinner";
-import { Typography } from "@/ui/design-system/typography/typography";
-import { RiAccountPinBoxLine } from "react-icons/ri";
+import { BasicLayout } from "@/ui/components/layouts/basicLayout";
 
 export const generateMetadata =  () => {
   return Seo({
@@ -15,14 +8,11 @@ export const generateMetadata =  () => {
   })
 }
 
-export default function Home() {
+export default function Projects() {
 
   return (
-    <>
-      <Navigation />
-       <main className="max-w-screen min-h-screen flex flex-col items-center justify-center p-0 pt-10 m-0 mt-10">
-
-      </main>
-    </>
+    <BasicLayout>
+      Projects
+    </BasicLayout>
   );
 }

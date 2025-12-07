@@ -1,5 +1,5 @@
 import Seo from "@/libs/seo";
-import { Layout } from "@/ui/components/layouts/layout";
+import { BasicLayout } from "@/ui/components/layouts/basicLayout";
 import { InscriptionContainer } from "@/ui/modules/authentification/inscription/inscription.container";
 
 export const generateMetadata =  () => {
@@ -12,10 +12,10 @@ export const generateMetadata =  () => {
 export default function Inscription() {
 
   return (
-    <>
-      <Layout>
-        <InscriptionContainer/>
-      </Layout>
+    <> 
+      <BasicLayout> 
+        <InscriptionContainer/> 
+      </BasicLayout>
     </>
   );
 }

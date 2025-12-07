@@ -1,5 +1,5 @@
 import Seo from "@/libs/seo";
-import { Layout } from "@/ui/components/layouts/layout";
+import { BasicLayout } from "@/ui/components/layouts/basicLayout";
 import { LostPasswordContainer } from "@/ui/modules/authentification/lostPassword/lostPassword.container";
 
 export const generateMetadata =  () => {
@@ -12,10 +12,10 @@ export const generateMetadata =  () => {
 export default function LostPassword() {
 
   return (
-    <>
-      <Layout>
-        <LostPasswordContainer/>
-      </Layout>
+    <> 
+      <BasicLayout> 
+        <LostPasswordContainer/> 
+      </BasicLayout>
     </>
   );
 }

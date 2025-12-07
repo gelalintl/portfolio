@@ -1,5 +1,5 @@
-import { Navigation } from "@/components/navigation/navigation";
 import Seo from "@/libs/seo";
+import { BasicLayout } from "@/ui/components/layouts/basicLayout";
 
 export const generateMetadata =  () => {
   return Seo({
@@ -9,13 +9,9 @@ export const generateMetadata =  () => {
 }
 
 export default function Dashboard() {
-
   return (
-    <>
-      <Navigation />
-       <main className="max-w-screen min-h-screen flex flex-col items-center justify-center p-0 pt-10 m-0 mt-10">
-        Dashbord
-      </main>
-    </>
+    <BasicLayout>
+      Dashboard
+    </BasicLayout>
   );
 }

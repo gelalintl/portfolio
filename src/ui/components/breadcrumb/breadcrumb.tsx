@@ -8,7 +8,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { Container } from "../container/container";
 import { Crumb, crumbsList } from "@/types/crumbs";
 
-export const Breadcrumb = () => {
+interface BreadcrumbProps {
+    visible?: boolean,
+}
+
+export const Breadcrumb = ({visible = true}:BreadcrumbProps) => {
 
     const pathname = usePathname();
 
@@ -39,10 +43,14 @@ export const Breadcrumb = () => {
     ))
 
   return (
-    <Container className="mt-2.5 mb-5">
-        <Typography variant="caption1" balise="span" theme="gray" className="flex gap-2">
-            {breadcrumb}
-        </Typography>
-    </Container>
+    <>
+        {visible && (
+            <Container className="mt-2.5 mb-5">
+                <Typography variant="caption1" balise="span" theme="gray" className="flex gap-2">
+                    {breadcrumb}
+                </Typography>
+            </Container>
+        )}
+    </>
   )
 }

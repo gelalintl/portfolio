@@ -1,12 +1,12 @@
 import Seo from "@/libs/seo";
 import { Container } from "@/ui/components/container/container";
+import { BasicLayout } from "@/ui/components/layouts/basicLayout";
 import { Avatar } from "@/ui/design-system/avatar/avatar";
 import { Button } from "@/ui/design-system/button/button";
 import { Logo } from "@/ui/design-system/logo/logo";
 import { Spinner } from "@/ui/design-system/spinner/spinner";
 import { Typography } from "@/ui/design-system/typography/typography";
 import { RiAccountPinBoxLine } from "react-icons/ri";
-import { Layout } from "@/ui/components/layouts/layout";
 
 export const generateMetadata =  () => {
   return Seo({
@@ -23,8 +23,7 @@ export const breadcrumb = [
 
 export default function Design() {
     return (
-        <>
-          <Layout>
+        <BasicLayout>
             <Container className="space-y-5">
               <div className="flex items-start gap-8">
                 {/* Spinner */}
@@ -105,8 +104,7 @@ export default function Design() {
                 </div>   
               </div>
             </Container>
-          </Layout>
-        </>
+        </BasicLayout>
       );
     
 }
