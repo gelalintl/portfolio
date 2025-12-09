@@ -1,5 +1,4 @@
-import { FirebaseCreateFormField } from "@/types/firebaseFormField";
-import { FirebaseLoginFormField } from "@/types/firebaseFormField";
+import { FirebaseCreateFormField, FirebaseLoginFormField, FirebaseLostPasswordFormField } from "@/types/firebaseFormField";
 
 export interface FirebaseErrorsConfig<TField extends string>{
     field? : TField,
@@ -29,4 +28,15 @@ export const FIREBASE_LOGIN_ERRORS : Record<string, FirebaseErrorsConfig<Firebas
     "auth/invalid-credential":{
         message: "Email et/ou mot de passe incorrects."
     }
+}
+
+export const FIREBASE_LOSTPASSWORD_ERRORS : Record<string, FirebaseErrorsConfig<FirebaseLostPasswordFormField>> = {
+    "auth/user-not-found": {
+        field: "email",
+        message: "Aucun compte associé à cet email",
+      },
+      "auth/invalid-email": {
+        field: "email",
+        message: "Adresse email invalide",
+      },
 }

@@ -20,6 +20,4 @@ export interface LoginFormFieldsType {
 
 export interface LostPasswordFormFieldType {
     email: string,
-    password: string,
-    wayYouKnowUs: string,
 }
