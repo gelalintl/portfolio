@@ -11,8 +11,10 @@ import { InscriptionFormFieldsType } from "@/types/forms"
 import { InscriptionView } from "./inscription.view"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FirebaseCreateUser } from "@/api/authentication";
+import { FirebaseCreateUser, FirebaseSendEmailVerification } from "@/api/authentication";
 import toast from "react-hot-toast";
+import { serverTimestamp } from "firebase/firestore";
+import { saveDocument } from "@/api/firestoreServices";
 
 export const InscriptionContainer = () => {
 
@@ -28,10 +30,33 @@ export const InscriptionContainer = () => {
     reset,
   } = useForm<InscriptionFormFieldsType>()
 
-  const handleCreateUserAuthentication = async ({email, password}:InscriptionFormFieldsType) => {
+  const handleCreateUserDocument = async(userID : string, email : string, wayYouKnow:string) => {
+    const userData ={
+      uid: userID,
+      email: email,
+      wayYouKnow: wayYouKnow,
+      role: "user",
+      onboardingStatus: "ongoing",
+      createdAt: serverTimestamp(),
+    }
+
+    const {success} = await saveDocument("users", userID, userData);
+
+    if(!success){
+      throw new Error("Erreur lors de la création de l'utilisateur. Veuillez réessayer.")
+    }
+
+    return success;
+
+  }
+
+  const handleCreateUserAuthentication = async ({email, password, wayYouKnowUs}:InscriptionFormFieldsType) => {
 
     toast.promise(
-      FirebaseCreateUser(email, password) ,
+      FirebaseCreateUser(email, password).then(async(user) => {
+        if(user?.uid){   await handleCreateUserDocument(user.uid, email, wayYouKnowUs)  }
+        return user;
+      }),
       {
         loading : "Création de l'utilisateur en cours. Veuillez patienter....",
         success : "L'utilisateur a été créé avec succès. Redirection vers votre tableau de bord en cours ...",
@@ -56,6 +81,7 @@ export const InscriptionContainer = () => {
       setTimeout(()=>{
         reset()
         setIsLoading(false)
+        FirebaseSendEmailVerification()
         router.push("/user/dashboard")
       },2200)
     })

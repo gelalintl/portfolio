@@ -1,5 +1,5 @@
 {/**    Firebase importations      */}
-import { createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, User } from "firebase/auth";
 import { auth } from "@/config/firebase.config";
 import { FirebaseError } from "firebase/app";
 
@@ -53,4 +53,19 @@ export const FirebaseLostPassword = async (email:string) =>{
     }
     throw new Error("Erreur inconnue")
    }
+}
+
+export const FirebaseSendEmailVerification = async ()=> {
+  if(auth.currentUser){
+    try{
+      await sendEmailVerification(auth.currentUser)
+      return true
+    }
+    catch (error) { 
+      if (error instanceof FirebaseError) {
+        throw error
+      }
+      throw new Error("Erreur inconnue")
+     }
+}
 }

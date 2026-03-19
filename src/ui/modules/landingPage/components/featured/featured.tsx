@@ -5,13 +5,13 @@ import { Important } from "@/ui/design-system/effects/important";
 import { Typography } from "@/ui/design-system/typography/typography";
 import Image from "next/image";
 import { RiArrowRightLine } from "react-icons/ri";
-import { v4 as uuidv4 } from 'uuid';
 
 interface featuredProps{
   imgSrc: string,
   imgAlt: string,
   title: string,
   description: string,
+  id: string | "featured",
 }
 
 const featuredDatas : featuredProps[] = [
@@ -20,31 +20,35 @@ const featuredDatas : featuredProps[] = [
     imgAlt: "Coffre aux trésors pour représenter la valeur de la connaissance semblable à un trésor.",
     title: "Ressources",
     description: "Consulte et partage des ressources pour les devs",
+    id : "ressources-controller",
   },
   {
     imgSrc: "/assets/svg/sword.svg",
     imgAlt: "Une épée de chevalier pour montrer que l'entraînement est ardu",
     title: "Entraînements",
     description: "Entraine-toi à devenir meilleur et trouve de l'inspiration",
+    id: "entrainements-sword",
   },
   {
     imgSrc: "/assets/svg/mirror.svg",
     imgAlt: "Un miroir pour indiquer le reflet de tes compétences sur ta carrière de dev.",
     title: "Visibilité",
     description: "Expose tes projets et crée toi des opportunités",
+    id:"visibilite-mirror",
   },
   {
     imgSrc: "/assets/svg/handshake.svg",
     imgAlt: "Une poignée de mains montrant les relations tissées.",
     title: "Relations",
     description: "Connecte-toi avec des devs et propulse ta carrière!",
+    id: "relations-handshake",
   },
 ]
 
 export const FeaturedView = () => {
 
   const featuredList = featuredDatas.map(feature => (
-    <div key={uuidv4()} className="flex flex-col items-center justify-center bg-white rounded p-7">
+    <div key={feature.id} className="flex flex-col items-center justify-center bg-white rounded p-7">
       <div className="w-[130px] h-[130px] rounded-full mb-6 p-10 bg-gray-100 relative overflow-hidden">
         <Image
           fill

@@ -6,6 +6,7 @@ export interface FirestoreUser{
   role: "user" | "admin";
   displayName: string;
   createdAt: Date;
+  lastSigninAt: Date;
   photoURL: string;
   howDidYouHearAboutUs?: string;
 }
