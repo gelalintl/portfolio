@@ -10,14 +10,14 @@ interface AuthGuardProps {
 }
 
 export const AuthGuard = ({children}:AuthGuardProps) =>{
-    const {user, loading} = useAuth()
+    const {authUser, authUserIsLoading} = useAuth()
     const router = useRouter()
 
     useEffect(()=>{
-        if(!loading && !user) router.replace("/connexion")
-    }, [user, loading, router])
+        if(!authUserIsLoading && !authUser) router.replace("/connexion")
+    }, [authUser, authUserIsLoading, router])
 
-    if(loading){
+    if(authUserIsLoading){
         return (
             <div className="w-screen h-screen flex items-center justify-center">
                 <Spinner size="large" variant="primary"/>
@@ -25,7 +25,7 @@ export const AuthGuard = ({children}:AuthGuardProps) =>{
         )
     }
 
-    if (!user) {
+    if (!authUser) {
         return null;
     }
 

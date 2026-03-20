@@ -14,7 +14,10 @@ interface NavigationProps {}
 
 export const Navigation = ({}: NavigationProps) => {
 
-    const {user, loading} = useAuth()
+    const {authUser, authUserIsLoading} = useAuth()
+    
+    console.log("Which user do we have ?:", authUser, "Are we loading ?", authUserIsLoading);
+
     const router = useRouter()
 
     const handleLogoutUser = () => {
@@ -59,14 +62,14 @@ export const Navigation = ({}: NavigationProps) => {
 
                 {/* Buttons */}
                 <div className="flex items-center gap-2">
-                    {!loading && !user && (
+                    {!authUserIsLoading && !authUser && (
                         <>
                         <Button size="small" baseUrl="/connexion">Connexion</Button>
                         <Button size="small" variant="secondary" baseUrl="/connexion/inscription">Rejoindre</Button>
                         </>
                     )}
 
-                    {!loading && user && (
+                    {!authUserIsLoading && authUser && (
                         <>
                         <Button size="small" variant="secondary" onClick={handleLogoutUser}>Déconnexion</Button>
                         </>
