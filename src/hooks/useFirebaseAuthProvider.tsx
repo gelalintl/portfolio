@@ -25,7 +25,7 @@ export const useFirebaseAuthProvider = () => {
         }
     }
 
-    const getUserDocument = async(user: User) => {
+    const getUserDocument = (user: User) => {
         const userDocRef = doc(db, "users", user.uid);
         const unsubscribe = onSnapshot(userDocRef, (snapshot) => {
             let userData : UserInterface;
@@ -46,14 +46,15 @@ export const useFirebaseAuthProvider = () => {
     useEffect(() => {
         let unsubscribeSnapshot: (() => void) | null = null;
 
-        const unsubscribeAuth = onAuthStateChanged(auth, async(user) => {
+        const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+            setAuthUserIsLoading(true);
             if (!user) {
                 if(unsubscribeSnapshot) unsubscribeSnapshot();
                 setAuthUser(null);
                 setAuthUserIsLoading(false);
                 return;
             }
-            unsubscribeSnapshot = await getUserDocument(user);
+            unsubscribeSnapshot = getUserDocument(user);
 
         })
 

@@ -12,12 +12,12 @@ export const BasicLayout = ({children}: BasicLayoutProps) => {
 
   return (
     <>
-          <Navigation />
-          <main className="max-w-screen min-h-screen flex flex-col p-0 pt-10 m-0 mt-10">
-          <Breadcrumb />
-            {children}
-          </main>
-          <Footer />
+      <Navigation />
+      <main className="max-w-screen min-h-screen flex flex-col p-0 pt-10 m-0 mt-10">
+        <Breadcrumb />
+        {children}
+      </main>
+      <Footer />
     </>
   )
 }

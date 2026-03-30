@@ -16,8 +16,6 @@ export const Navigation = ({}: NavigationProps) => {
 
     const {authUser, authUserIsLoading} = useAuth()
     
-    console.log("Which user do we have ?:", authUser, "Are we loading ?", authUserIsLoading);
-
     const router = useRouter()
 
     const handleLogoutUser = () => {
@@ -29,7 +27,7 @@ export const Navigation = ({}: NavigationProps) => {
                 error: "Une erreur est survenue lors de la déconnexion."
             }
         )
-        .then(()=> router.push("/"))
+        
     }
 
   return (
