@@ -6,28 +6,45 @@ import { Logo } from "@/ui/design-system/logo/logo"
 import { Typography } from "@/ui/design-system/typography/typography"
 import { ActiveLink } from "./activeLink"
 import { useAuth } from "@/context/AuthContext"
-import { useRouter } from "next/navigation"
-import toast from "react-hot-toast"
-import { FirebaseLogoutUser } from "@/api/authentication"
+import Link from "next/link"
+import { Avatar } from "@/ui/design-system/avatar/avatar"
 
 interface NavigationProps {}
 
 export const Navigation = ({}: NavigationProps) => {
 
-    const {authUser, authUserIsLoading} = useAuth()
-    
-    const router = useRouter()
+    const {authUser} = useAuth()
 
-    const handleLogoutUser = () => {
-        toast.promise(
-            FirebaseLogoutUser(),
-            {
-                loading: "Déconnexion en cours...",
-                success: "Vous avez été déconnecté.",
-                error: "Une erreur est survenue lors de la déconnexion."
-            }
+    const {photoURL, displayName} = authUser || {}
+
+    const authButtonsDisplay = ()=> (
+        <>
+            <Button size="small" baseUrl="/connexion">Connexion</Button>
+            <Button size="small" variant="secondary" baseUrl="/connexion/inscription">Rejoindre</Button>
+        </>
+    )
+
+    const userButtonsDisplay = ()=> {
+        console.log("authUser", authUser)
+        return(
+            <>
+            <Link href="/user/dashboard" className="flex items-center gap-2">
+                <Avatar size="large" 
+                        src={photoURL ?? undefined} 
+                        alt={displayName ?? undefined} 
+                />
+                <div className="max-w-[160px]">
+                    <Typography variant="caption2" weigth="medium" className="truncate">
+                        {displayName ?? "Pseudo utilisateur"}
+                    </Typography>
+                    <Typography variant="caption4" weigth="medium" theme="gray">
+                        Mon compte
+                    </Typography>
+                </div>
+            </Link>
+            {/* <Button size="small" variant="secondary" onClick={handleLogoutUser}>Déconnexion</Button> */}
+        </>
         )
-        
     }
 
   return (
@@ -60,18 +77,7 @@ export const Navigation = ({}: NavigationProps) => {
 
                 {/* Buttons */}
                 <div className="flex items-center gap-2">
-                    {!authUserIsLoading && !authUser && (
-                        <>
-                        <Button size="small" baseUrl="/connexion">Connexion</Button>
-                        <Button size="small" variant="secondary" baseUrl="/connexion/inscription">Rejoindre</Button>
-                        </>
-                    )}
-
-                    {!authUserIsLoading && authUser && (
-                        <>
-                        <Button size="small" variant="secondary" onClick={handleLogoutUser}>Déconnexion</Button>
-                        </>
-                    )}
+                    {!authUser ? authButtonsDisplay() : userButtonsDisplay()}
                 </div>
             </div>
         </Container>

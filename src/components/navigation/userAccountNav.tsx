@@ -5,14 +5,12 @@ import { useAuth } from "@/context/AuthContext"
 import { Box } from "@/ui/design-system/box/box"
 import { Button } from "@/ui/design-system/button/button"
 import { Typography } from "@/ui/design-system/typography/typography"
-import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 import { ActiveLink } from "./activeLink"
 
 export const UserAccountNavigation = () => {
 
-    const {user, loading} = useAuth()
-    const router = useRouter()
+    const {authUser, authUserIsLoading} = useAuth()
 
     const handleLogoutUser = () => {
         toast.promise(
@@ -23,7 +21,6 @@ export const UserAccountNavigation = () => {
                 error: "Une erreur est survenue lors de la déconnexion."
             }
         )
-        .then(()=> router.push("/"))
     }
 
   return (
@@ -37,7 +34,7 @@ export const UserAccountNavigation = () => {
             </Typography>
         </div>
         <div className="flex justify-center">
-        {!loading && user && (
+        {!authUserIsLoading && authUser && (
             <><Button size="small" variant="secondary" onClick={handleLogoutUser}>Déconnexion</Button> </>
          )}
         </div>

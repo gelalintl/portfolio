@@ -25,9 +25,7 @@ export const AuthGuard = ({children}:AuthGuardProps) =>{
         )
     }
 
-    if (!authUser) {
-        return null;
-    }
+    if (!authUser) {  return null; }
 
     return (
         <>

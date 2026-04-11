@@ -2,12 +2,12 @@ import Image from "next/image";
 
 interface AvatarProps {
     size? : "small" | "medium" | "large";
-    src: string;
+    src?: string;
     alt?: string;
     className?: string;
 }
 
-export const Avatar = ({size = "medium", src, alt, className}: AvatarProps) => {
+export const Avatar = ({size = "medium", src="/assets/images/bear.jpg", alt="avatar", className}: AvatarProps) => {
 
     let sizeLogo : string = "";
 
@@ -27,7 +27,7 @@ export const Avatar = ({size = "medium", src, alt, className}: AvatarProps) => {
         <div className={`${sizeLogo} bg-gray-400 rounded-full relative overflow-hidden`}>
             <Image
                 src={src}
-                alt={alt || "Avatar"}
+                alt={alt}
                 fill
                 sizes={sizeLogo}
                 className={`rounded-full object-cover object-center ${className || ""}`}

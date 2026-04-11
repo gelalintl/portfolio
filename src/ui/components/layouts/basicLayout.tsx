@@ -13,7 +13,7 @@ export const BasicLayout = ({children}: BasicLayoutProps) => {
   return (
     <>
       <Navigation />
-      <main className="max-w-screen min-h-screen flex flex-col p-0 pt-10 m-0 mt-10">
+      <main className="max-w-screen min-h-screen flex flex-col p-0 pt-10 m-0 mt-10 pl-10 pr-10">
         <Breadcrumb />
         {children}
       </main>

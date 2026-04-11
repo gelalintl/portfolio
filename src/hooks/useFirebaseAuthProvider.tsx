@@ -13,8 +13,9 @@ export const useFirebaseAuthProvider = () => {
             uid: user.uid,
             email: user.email,
             emailVerified: user.emailVerified,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
+            displayName: userDoc?.displayName ?? user.displayName,
+            photoURL: userDoc?.photoURL ?? user.photoURL,
+            onboardingIsCompleted: userDoc?.onboardingIsCompleted ?? false,
             lastSigninAt: user.metadata.lastSignInTime 
                             ? Timestamp.fromDate(new Date(user.metadata.lastSignInTime)) 
                             : Timestamp.now(),

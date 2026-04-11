@@ -6,6 +6,7 @@ export interface UserInterface {
   emailVerified: boolean;
   displayName: string | null;
   photoURL: string | null;
+  onboardingIsCompleted: boolean;
   lastSigninAt: Timestamp;
   createdAt: Timestamp;
   userDocument?: FirestoreUser;
@@ -16,7 +17,9 @@ export interface FirestoreUser{
   email: string;
   role: "user" | "admin";
   createdAt: Timestamp;
-  onboardingStatus: "ongoing" | "completed";
+  onboardingIsCompleted: boolean;
   wayYouKnow?: string;
+  displayName: string | null;
+  photoURL: string | null;
   //...
 }

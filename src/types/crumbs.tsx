@@ -14,4 +14,5 @@ export const crumbsList : Crumb[] = [
     {key: "inscription", label: "Inscription", href : "/connexion/inscription"},
     {key: "mot-de-passe-perdu", label: "Récupération du mot de passe", href : "/connexion/mot-de-passe-perdu"},
     {key: "dashboard", label: "Tableau de bord", href : "/user/dashboard"},
+    {key: "onboarding", label: "Onboarding", href : "/user/onboarding"},
 ]
