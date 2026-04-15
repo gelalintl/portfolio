@@ -1,5 +1,6 @@
 import Seo from "@/libs/seo";
-import { BasicLayout } from "@/ui/components/layouts/basicLayout";
+import { PlainLayout } from "@/ui/components/layouts/plainLayout";
+import { OnboardingContainer } from "@/ui/modules/onboarding/onboarding.container";
 
 export const generateMetadata =  () => {
   return Seo({
@@ -10,8 +11,10 @@ export const generateMetadata =  () => {
 
 export default function Onboarding() {
   return (
-    <BasicLayout>
-      Onboarding Page
-    </BasicLayout>
+    <PlainLayout>
+      <div className="flex flex-col w-full justify-center items-center">
+        <OnboardingContainer />
+      </div>
+    </PlainLayout>
   );
 }
