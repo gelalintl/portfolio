@@ -19,7 +19,9 @@ export interface FirestoreUser{
   createdAt: Timestamp;
   onboardingIsCompleted: boolean;
   wayYouKnow?: string;
-  displayName: string | null;
+  displayName?: string | null;
   photoURL: string | null;
+  expertise?: string;
+  biography?: string;
   //...
 }

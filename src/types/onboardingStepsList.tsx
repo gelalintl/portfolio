@@ -6,7 +6,7 @@ export interface BaseComponentProps {
     nextStep: () => void;
     prevStep: () => void;
     stepsList: onboardingStepInterface[];
-    currentStep: () => onboardingStepInterface | undefined;
+    currentStep: onboardingStepInterface;
 }
 
 export interface onboardingStepInterface {

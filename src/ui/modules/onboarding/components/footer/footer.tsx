@@ -21,7 +21,7 @@ interface OnboardingFooterProps {
 export const OnboardingFooter = ({
     isFirstStep,
     isLastStep,
-    isLoading,
+    isLoading = false,
     next,
     prev,
 }:OnboardingFooterProps) => {
@@ -42,7 +42,7 @@ export const OnboardingFooter = ({
     }
 
     return (
-        <div className="absolute bottom-0 left-0 w-full p-5 bg-white border-t border-gray-400">
+        <div className="absolute z-20 bottom-0 left-0 w-full p-5 bg-white border-t border-gray-400">
             <div className={`flex flex-row items-center gap-5 
                 ${prev && !next && "justify-start"}
                 ${!prev && next && "justify-end"}

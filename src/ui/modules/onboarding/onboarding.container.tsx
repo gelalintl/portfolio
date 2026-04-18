@@ -5,7 +5,7 @@ import { OnboardingView } from "./onboarding.view";
 import { WelcomeStep } from "./components/steps/welcome/welcomeStep";
 import { onboardingStepInterface } from "@/types/onboardingStepsList";
 import { ProfileStep } from "./components/steps/profile/profileStep";
-import { PreferencesStep } from "./components/steps/preferences/preferencesStep";
+import { AvatarStep } from "./components/steps/avatar/avatarStep";
 
 export const OnboardingContainer = () => {
 
@@ -31,17 +31,20 @@ export const OnboardingContainer = () => {
     },
     {
       id : 3,
-      label : "Preferences",
-      component : { step: PreferencesStep },
+      label : "Avatar",
+      component : { step: AvatarStep },
     },
   ];
 
   //Recupère les données de l'étape en cours
-  const getCurrentStep = () => { return stepsList.find(step => step.id === currentStep)};  
+  const getCurrentStep = () => { 
+    return stepsList.find(step => step.id === currentStep);
+  };
+  const activeStep = getCurrentStep() || stepsList[0]
 
   //Fonctions de navigation entre les étapes
-  const nextStep = () => currentStep < stepsList.length && setCurrentStep(prev => prev + 1)
-  const prevStep = () => currentStep > 1 && setCurrentStep(prev => prev - 1)
+  const nextStep = () => currentStep < stepsList.length && setCurrentStep((currentStep) => currentStep + 1)
+  const prevStep = () => currentStep > 1 && setCurrentStep((currentStep) => currentStep - 1)
 
   //Indicateurs d'étape
   const isFirstStep = currentStep === 1 ? true : false;
@@ -49,7 +52,7 @@ export const OnboardingContainer = () => {
 
     return (
       <OnboardingView
-        currentStep={getCurrentStep}
+        currentStep={activeStep}
         isFirstStep={isFirstStep}
         isLastStep={isLastStep}
         nextStep={nextStep}

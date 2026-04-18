@@ -1,7 +1,7 @@
 interface TypographyProps {
     variant?: "display" | "h1" | "h2" | "h3" | "h4" |"h5" | "lead" | "body-base" |"body-lg" | "body-sm" | "caption1" | "caption2" | "caption3" | "caption4";
     balise? : "h1" | "h2" | "h3" | "h4" |"h5" | "p" | "span" | "div";
-    theme? : "black" | "white" | "gray" | "primary" | "secondary" | "danger" | "success" | "warning";
+    theme? : "black" | "white" | "gray" | "gray-light" |"primary" | "secondary" | "danger" | "success" | "warning";
     weigth? : "regular" | "medium";
     className?: string;
     children : React.ReactNode;
@@ -75,6 +75,9 @@ export const Typography = ({
         break;
         case "gray":
             themeClass = "text-gray-700";
+        break;
+        case "gray-light":
+            themeClass = "text-gray-600";
         break;
         case "primary":
             themeClass = "text-primary";

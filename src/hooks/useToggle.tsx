@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 interface ToggleProps {
     init?: boolean,
@@ -7,7 +7,7 @@ interface ToggleProps {
 export const useToggle = ({init = false}:ToggleProps={}) => {
 
     const [ value, setValue ] = useState<boolean>(init);
-    const toggle = () => setValue(!value)
+    const toggle = useCallback(() => setValue((prev) => !prev), [])
     
   return {
     value,

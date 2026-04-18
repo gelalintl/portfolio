@@ -11,6 +11,7 @@ interface InputProps{
     isRequired?: boolean,
     isAutocompleted?: boolean,
     className?: string,
+    label?:string,
 }
 
 
@@ -25,6 +26,7 @@ export const Input = ({
     isLoading,
     isAutocompleted = false,  
     className,  
+    label,
  }: InputProps) => {
 
   const errorTheme =
@@ -35,6 +37,11 @@ export const Input = ({
 
   return (
     <div className="space-y-3">
+        {label && (
+            <Typography variant="caption3" balise="div" theme={`${errors[id] ? "danger" : "gray"}`}>
+                {label}
+              </Typography>
+        )}
         <input 
           type={type} 
           placeholder={placeholder} 
@@ -55,7 +62,7 @@ export const Input = ({
           autoComplete={isAutocompleted ? "on" : "off"}
         />
         {errors[id] && (
-            <Typography variant="caption4" balise="div" theme={errorTheme}>
+            <Typography variant="caption4" balise="div" theme="danger">
                 {errors[id].message}
             </Typography>
         )}

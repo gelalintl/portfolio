@@ -53,6 +53,9 @@
     .hover\:bg-primary-600:hover{
         background-color : #5652cb;
     }
+    .border-primary{
+        border-color : #5f62e2;
+    }
 
     .text-secondary{
         color : #2ab691;
@@ -139,6 +142,10 @@
     }
     .bg-gray-800{
         background-color : #333333;
+    }
+
+    .border-gray-400{
+        border-color : #f2f2f2;
     }
 
     /* danger (rouge) */

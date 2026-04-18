@@ -9,8 +9,9 @@ export const OnboardingView = (
       prevStep, 
       stepsList 
     } : BaseComponentProps) => {
-      if(currentStep()?.component){
-        const StepComponent = currentStep()?.component.step;
+      if(currentStep.component){
+
+        const StepComponent = currentStep.component.step;
         return (
           <>
             {StepComponent && (

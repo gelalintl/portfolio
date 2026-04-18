@@ -39,10 +39,9 @@ export const updateDocument = async<T extends DocumentData>(collectionName: stri
         const docRef = doc(db, collectionName, docId);
         await updateDoc(docRef, data);
 
-        return {success : true}
+        return {success : true, error: null}
     }
     catch(error){
-        console.error("Error updating Firestore Document: ", error);
-        return {success : false}
+        return {success : false, error: error}
     }
 }
